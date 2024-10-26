@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Integer> numbers = readInFile(CSVFILE);
+        List<Integer> numbers = readInFile();
 
         System.out.print("chunks> ");
         int chunks = Integer.parseInt(scanner.nextLine());
@@ -57,9 +57,9 @@ public class Main {
 
     }
 
-    private static List<Integer> readInFile(String filename) {
+    private static List<Integer> readInFile() {
         try {
-            return Files.lines(new File(filename).toPath())
+            return Files.lines(new File(CSVFILE).toPath())
                     .flatMap(a -> Arrays.stream(a.split(":")))
                     .filter(s -> !s.isEmpty())
                     .filter(s -> {

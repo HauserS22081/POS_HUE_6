@@ -15,12 +15,12 @@ public class Main {
         ArrayList<Callable<Integer>> callables = new ArrayList<>();
 
         int iterator = upperBound / 100;
-        if (upperBound / 100 != 0) iterator++;
+        if (upperBound % 100 != 0) iterator++;
 
         int tempLowerBound = 1;
         int tempUpperBound = 100;
         for (int i = 0; i < iterator; i++) {
-            if (i == iterator -1 && upperBound / 100 != 0) tempUpperBound = upperBound % 100;
+            if (i == iterator -1 && upperBound % 100 != 0) tempUpperBound = upperBound;
 
             callables.add(new CallableTask(tempLowerBound, tempUpperBound));
 
@@ -49,7 +49,7 @@ public class Main {
 
 
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error in sum future objects: " + e.getMessage());
         }
 
         System.out.println("Sum: " + sum);

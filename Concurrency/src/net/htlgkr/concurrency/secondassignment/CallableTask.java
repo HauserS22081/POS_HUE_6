@@ -14,8 +14,9 @@ public class CallableTask implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        int n = upperBound - lowerBound;
+        int sum = (upperBound - lowerBound + 1) / 2 * (lowerBound + upperBound);
+        if ((upperBound - lowerBound) % 2 == 0) sum += (upperBound - lowerBound) / 2;
 
-        return (upperBound - lowerBound) / 2 * (lowerBound + upperBound);
+        return sum;
     }
 }
